@@ -169,9 +169,12 @@ void l2_reset(tap_dance_state_t *state, void *user_data) {
 #define AT_FWD A(KC_TAB)
 #define TAB_BCK C(S(KC_TAB))
 #define TAB_FWD C(KC_TAB)
-#define DSK_LFT C(G(KC_LEFT))
-#define DSK_RGT C(G(KC_RIGHT))
+#define DSK_LFT C(A(KC_LEFT))
+#define DSK_RGT C(A(KC_RIGHT))
 #define KC_EURO RALT(KC_4)
+// Some hyprland binds
+#define HY_SWU G(S(KC_RIGHT))
+#define HY_SWD G(S(KC_LEFT))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -232,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
          XXXXXXX, XXXXXXX,  AT_BCK,  AT_FWD, XXXXXXX,    XXXXXXX, DSK_LFT, DSK_RGT, XXXXXXX, XXXXXXX,
     // ├─────────────────────────────────────────────┤ ├─────────────────────────────────────────────┤
-         XXXXXXX, XXXXXXX, TAB_BCK, TAB_FWD, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+         XXXXXXX, XXXXXXX, TAB_BCK, TAB_FWD, XXXXXXX,    XXXXXXX,  HY_SWD,  HY_SWU, XXXXXXX, XXXXXXX,
     // ╰─────────────────────────────────────────────┤ ├─────────────────────────────────────────────╯
                            KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS
     //                   ╰───────────────────────────╯ ╰──────────────────╯
