@@ -254,14 +254,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-#define DEFAULT_DPI 400
+#define DEFAULT_DPI 360
 #define FOCUS_DPI 200
 #define DRAGSCROLL_DPI 80
 #define DRAGSCROLL_BUFFER_SIZE 6
 
 static bool set_scrolling = false;
 static uint8_t current_layer = _HALMAK;
-/** 
+/**
  * \brief reduce dpi when in certain layers
  *
  * Less DPI when dragscrolling and in the function layer
