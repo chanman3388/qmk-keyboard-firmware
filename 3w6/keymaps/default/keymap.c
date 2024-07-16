@@ -86,11 +86,11 @@ void l1_finished(tap_dance_state_t *state, void *user_data) {
     l1_tap_state.state = cur_dance(state);
     switch (l1_tap_state.state) {
         case TD_SINGLE_HOLD:
-            layer_on(1);
+            layer_on(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _SUPER);
             break;
         case TD_DOUBLE:
-            unregister_code(KC_LSFT);
+            register_code(KC_LSFT);
             if (layer_state_is(_LOWER)) {
                 layer_off(_LOWER);
                 update_tri_layer(_LOWER, _RAISE, _SUPER);
@@ -103,7 +103,7 @@ void l1_finished(tap_dance_state_t *state, void *user_data) {
 void l1_reset(tap_dance_state_t *state, void *user_data) {
     switch (l1_tap_state.state) {
         case TD_SINGLE_HOLD:
-            layer_off(1);
+            layer_off(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _SUPER);
             break;
         case TD_DOUBLE:
@@ -122,7 +122,7 @@ void l2_finished(tap_dance_state_t *state, void *user_data) {
     l2_tap_state.state = cur_dance(state);
     switch (l2_tap_state.state) {
         case TD_SINGLE_HOLD:
-            layer_on(2);
+            layer_on(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _SUPER);
             break;
         case TD_DOUBLE:
@@ -139,11 +139,11 @@ void l2_finished(tap_dance_state_t *state, void *user_data) {
 void l2_reset(tap_dance_state_t *state, void *user_data) {
     switch (l2_tap_state.state) {
         case TD_SINGLE_HOLD:
-            layer_off(2);
+            layer_off(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _SUPER);
             break;
         case TD_DOUBLE:
-            register_code(KC_LCTL);
+            unregister_code(KC_LCTL);
              if (layer_state_is(_RAISE)) {
                 layer_off(_RAISE);
                 update_tri_layer(_LOWER, _RAISE, _SUPER);
