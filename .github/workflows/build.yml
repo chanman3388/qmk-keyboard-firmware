@@ -43,8 +43,14 @@ jobs:
       - name: Build 3w6
         run: qmk compile -kb 3w6 -km default
 
-      - name: Build charybdis_nano
-        run: qmk compile -kb charybdis_nano/elitec -km default 
+      - name: Build charybdis_nano elite c default
+        run: qmk compile -kb charybdis_nano/elitec -km default
+
+      - name: Build charybdis_nano rp2040 default
+        run: qmk compile -kb charybdis_nano/rp2040 -km default
+
+      - name: Build charybdis_nano rp2040 qwerty
+        run: qmk compile -kb charybdis_nano/rp2040 -km qwerty
           
       - name: Build cornerp
         run: qmk compile -kb cornerp -km default
