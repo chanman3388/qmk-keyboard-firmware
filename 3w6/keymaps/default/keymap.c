@@ -260,6 +260,9 @@ bool set_scrolling = false;
 #define SCROLL_DIVISOR_H 8.0
 #define SCROLL_DIVISOR_V 8.0
 
+#define NORMAL_CPI 24000
+#define SCROLL_CPI 8000
+
 // Variables to store accumulated scroll values
 float scroll_accumulated_h = 0;
 float scroll_accumulated_v = 0;
@@ -290,10 +293,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     switch (get_highest_layer(state)) {
         case _FUNCTION:
-            pimoroni_trackball_set_cpi(16000);
+            pimoroni_trackball_set_cpi(SCROLL_CPI);
             break;
         default:
-            pimoroni_trackball_set_cpi(32000);
+            pimoroni_trackball_set_cpi(NORMAL_CPI);
     }
 
     return state;
@@ -346,7 +349,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void keyboard_post_init_user(void) {
     pimoroni_trackball_set_rgbw(0, 0, 0, 255);
-    pimoroni_trackball_set_cpi(32000);
+    pimoroni_trackball_set_cpi(NORMAL_CPI);
 }
 
 #endif
