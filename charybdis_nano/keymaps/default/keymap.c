@@ -254,9 +254,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-#define DEFAULT_DPI 360
-#define FOCUS_DPI 200
-#define DRAGSCROLL_DPI 80
+#define DEFAULT_DPI 240
+#define FOCUS_DPI 120
+#define DRAGSCROLL_DPI 4
 #define DRAGSCROLL_BUFFER_SIZE 6
 
 static bool set_scrolling = false;
