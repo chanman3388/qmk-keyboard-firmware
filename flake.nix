@@ -14,8 +14,10 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = import nixpkgs { inherit system; };
       in with pkgs; {
-        devShell = mkShell rec {
-          QMK_HOME = "/home/chris/projects/qmk_firmware";
+        devShell = mkShell {
+          shellHook = ''
+            export QMK_HOME="$(dirname "$(dirname "$(pwd)")")"
+          '';
           buildInputs = [
             qmk
           ];
