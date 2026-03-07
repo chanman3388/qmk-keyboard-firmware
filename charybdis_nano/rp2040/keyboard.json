@@ -1,5 +1,5 @@
 {
-    "keyboard_name": "Charybdis Nano (3x5) Elite-C",
+    "keyboard_name": "Charybdis Nano (3x5) RP2040",
     "usb": {
         "device_version": "2.0.0"
     },
@@ -32,11 +32,13 @@
             "GP9"
         ]
     },
-    "diode_direction": "ROW2COL",
     "split": {
         "enabled": true,
-        "soft_serial_pin": "GP1"
+        "serial": {
+            "driver": "vendor",
+            "pin": "GP1"
+        }
     },
-    "processor": "RP2040",
-    "bootloader": "rp2040"
+    "diode_direction": "ROW2COL",
+    "development_board": "elite_pi"
 }
