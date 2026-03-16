@@ -8,6 +8,13 @@
         "vid": "0xFEED",
         "pid": "0x4658"
     },
+    "features": {
+        "bootmagic": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": false,
+        "unicode": true
+    },
     "processor": "atmega32u4",
     "bootloader": "atmel-dfu",
     "layouts": {
