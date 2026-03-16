@@ -21,7 +21,7 @@ jobs:
       - name: Install build dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: gcc-avr avr-libc gcc-arm-none-eabi libnewlib-arm-none-eabi
+          packages: gcc-avr avr-libc gcc-arm-none-eabi libnewlib-arm-none-eabi dfu-util dos2unix avrdude dfu-programmer
           version: 1.0
 
       - name: Set QMK_HOME
