@@ -2,16 +2,27 @@
     "manufacturer": "grooovebob",
     "keyboard_name": "dasbob",
     "maintainer": "grooovebob",
-    "processor": "RP2040",
-    "bootloader": "rp2040",
+    "development_board": "elite_pi",
     "url": "",
+    "features": {
+        "bootmagic": true,
+        "extrakey": true,
+        "nkro": true,
+        "audio": true,
+        "backlight": false,
+        "rgblight": false
+    },
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x0000",
         "vid": "0xFEED"
     },
-    "layout_aliases": {
-        "LAYOUT_split_3x5_3": "LAYOUT"
+    "audio": {
+        "driver": "pwm_hardware",
+        "pins": ["GP5"]
+    },
+    "split": {
+        "enabled": true
     },
     "layouts": {
         "LAYOUT": {

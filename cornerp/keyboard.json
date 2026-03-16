@@ -8,13 +8,31 @@
         "pid": "0x0000",
         "vid": "0xFEED"
     },
+    "development_board": "elite_pi",
+    "features": {
+        "bootmagic": true,
+        "audio": false,
+        "extrakey": true,
+        "nkro": false,
+        "tri_layer": true
+    },
+    "split": {
+        "transport": {
+            "sync": {
+                "matrix_state": true
+            }
+        },
+        "enabled": true,
+        "serial": {
+            "driver": "vendor",
+            "pin": "GP1"
+        }
+    },
     "matrix_pins": {
         "cols": [ "GP29", "GP28", "GP27", "GP26", "GP22", "GP20" ],
         "rows": [ "GP4", "GP5", "GP6", "GP7" ]
     },
     "diode_direction": "COL2ROW",
-    "processor": "RP2040",
-    "bootloader": "rp2040",
     "community_layouts": [ "split_3x5_3", "split_3x6_3" ],
     "layout_aliases": {
         "LAYOUT": "LAYOUT_split_3x6_3"
