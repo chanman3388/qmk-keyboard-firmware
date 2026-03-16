@@ -1,3 +1,17 @@
+/*
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #define TEXT_MOVE_TIMEOUT 250
 #define OLED_ROW_START 6
 #define OLED_WRITEABLE_WIDTH 15
@@ -40,7 +54,7 @@ void render_text(void) {
     if (oled_quote_state.end_idx < quote_len[oled_quote_state.quote_id]) {
         end = OLED_WRITEABLE_WIDTH;
     } else {
-        end = quote_len[oled_quote_state.quote_id] - oled_quote_state.start_idx;        
+        end = quote_len[oled_quote_state.quote_id] - oled_quote_state.start_idx;
     }
     for (i = 0; i < end; i++) buff[i] = quotes[oled_quote_state.quote_id][oled_quote_state.start_idx + i];
     if (end < OLED_WRITEABLE_WIDTH) {

@@ -21,9 +21,6 @@
 }
 
 
-/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 5
-
 /* Serial Config */
 #define USE_SERIAL
 #define SERIAL_USART_TX_PIN GP1
@@ -64,7 +61,6 @@
 #define AUDIO_PWM_DRIVER PWMD2
 #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_B
 #define AUDIO_STATE_TIMER GPTD4
-#define AUDIO_PIN GP5
 #ifdef AUDIO_ENABLE
     #define AUDIO_INIT_DELAY
     #define AUDIO_CLICKY
