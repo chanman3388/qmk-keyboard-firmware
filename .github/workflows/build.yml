@@ -6,35 +6,29 @@ on:
     branches:
       - main
 
-
 jobs:
   build_the_firmware:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set release tag
         run: |
           echo "TAG=`date --rfc-3339=date`" >> $GITHUB_ENV
 
       - name: Install build dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-avr avr-libc gcc-arm-none-eabi libnewlib-arm-none-eabi
-
-      - name: Setup python
-        uses: actions/setup-python@v5
+        uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          packages: gcc-avr avr-libc gcc-arm-none-eabi libnewlib-arm-none-eabi
+          version: 1.0
 
       - name: Set QMK_HOME
         run: echo "QMK_HOME=${HOME}/qmk_firmware" >> $GITHUB_ENV
 
       - name: Cache QMK firmware
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: qmk-cache
         with:
           path: ~/qmk_firmware
@@ -52,7 +46,7 @@ jobs:
         run: |
           cd $QMK_HOME
           git pull
-      
+
       - name: Setup keyboards
         run: |
           rm -rd $QMK_HOME/keyboards/*
@@ -74,7 +68,7 @@ jobs:
 
       - name: Build charybdis_nano rp2040 qwerty
         run: qmk compile -kb charybdis_nano/rp2040 -km qwerty
-          
+
       - name: Build cornerp
         run: qmk compile -kb cornerp -km default
 
@@ -82,13 +76,13 @@ jobs:
         run: qmk compile -kb dasbob -km halmak
 
       - name: Build sofle
-        run: qmk compile -kb sofle -km rgb_with_ind_halmak 
-      
+        run: qmk compile -kb sofle -km rgb_with_ind_halmak
+
       - name: Get git short SHA
         run: echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Upload firmware
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.TAG }}-${{ env.SHORT_SHA }}
           path: |
