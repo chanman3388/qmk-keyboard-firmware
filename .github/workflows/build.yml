@@ -19,16 +19,39 @@ jobs:
         run: |
           echo "TAG=`date --rfc-3339=date`" >> $GITHUB_ENV
 
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-avr avr-libc gcc-arm-none-eabi libnewlib-arm-none-eabi
+
       - name: Setup python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
+
+      - name: Set QMK_HOME
+        run: echo "QMK_HOME=${HOME}/qmk_firmware" >> $GITHUB_ENV
+
+      - name: Cache QMK firmware
+        uses: actions/cache@v4
+        id: qmk-cache
+        with:
+          path: ~/qmk_firmware
+          key: qmk-firmware-${{ runner.os }}
 
       - name: Install QMK
+        run: pip install --user qmk
+
+      - name: Setup QMK
+        if: steps.qmk-cache.outputs.cache-hit != 'true'
+        run: qmk setup -y
+
+      - name: Update QMK
+        if: steps.qmk-cache.outputs.cache-hit == 'true'
         run: |
-          echo "QMK_HOME=${HOME}/qmk_firmware" >> $GITHUB_ENV
-          pip install --user qmk
-          qmk setup -y
+          cd $QMK_HOME
+          git pull
       
       - name: Setup keyboards
         run: |
